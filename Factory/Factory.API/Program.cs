@@ -16,6 +16,10 @@ builder.Services.AddDbContext<FactoryContext>(options =>
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 builder.Services.AddScoped<IUsuarioRepository, UsuarioRepository>();
 
+builder.Services.AddScoped<IComicFavoritoService, ComicfavoritoService>();
+builder.Services.AddScoped<IComicFavoritoRepository, ComicFavoritoRepository>();
+
+
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
