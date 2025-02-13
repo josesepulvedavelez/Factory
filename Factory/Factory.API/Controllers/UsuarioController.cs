@@ -20,15 +20,24 @@ namespace Factory.API.Controllers
         public async Task<IActionResult> GuardarUsuario([FromBody] Usuario usuario)
         { 
             var result = await _usuarioService.GuardarUsuario(usuario);
+
             return Ok(result);
         }
 
-        [HttpGet("LoguearUsuario")]
-        public async Task<IActionResult> LoguearUsuario(string user, string pass)
+        [HttpPost("LoguearUsuario")]
+        public async Task<IActionResult> LoguearUsuario([FromBody] Usuario usuario)
         {
-            var result = await _usuarioService.LoguearUsuario(user, pass);
+            var result = await _usuarioService.LoguearUsuario(usuario);
+
             return Ok(result);
         }
 
+        [HttpGet("ConsultarUsuarios")]
+        public async Task<IActionResult> ConsultarUsuarios()
+        { 
+            var result = await _usuarioService.ConsultarUsuarios();
+
+            return Ok(result);
+        }
     }
 }

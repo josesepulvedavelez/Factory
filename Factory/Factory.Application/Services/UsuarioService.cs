@@ -1,4 +1,5 @@
 ﻿using Factory.Application.Interfaces;
+using Factory.Domain.DTOs;
 using Factory.Domain.Entities;
 using Factory.Domain.Interfaces;
 using System;
@@ -24,9 +25,16 @@ namespace Factory.Application.Services
             return result;
         }
 
-        public async Task<bool> LoguearUsuario(string userName, string pass)
+        public async Task<UsuarioDto> LoguearUsuario(Usuario usuario)
         {
-            var result = await _usuarioRepository.LoguearUsuario(userName, pass);
+            var result = await _usuarioRepository.LoguearUsuario(usuario);
+            return result;
+        }
+
+        public async Task<IEnumerable<Usuario>> ConsultarUsuarios()
+        {
+            var result = await _usuarioRepository.ConsultarUsuarios();
+
             return result;
         }
 

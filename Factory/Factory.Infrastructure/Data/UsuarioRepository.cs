@@ -1,4 +1,5 @@
-﻿using Factory.Domain.Entities;
+﻿using Factory.Domain.DTOs;
+using Factory.Domain.Entities;
 using Factory.Domain.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -18,6 +19,13 @@ namespace Factory.Infrastructure.Data
             _factoryContext = factoryContext;
         }
 
+        public async Task<IEnumerable<Usuario>> ConsultarUsuarios()
+        {
+            var result = await _factoryContext.Usuario.ToListAsync();
+
+            return result;
+        }
+
         public async Task<int> GuardarUsuario(Usuario usuario)
         {
              await _factoryContext.Usuario.AddAsync(usuario);
@@ -26,12 +34,28 @@ namespace Factory.Infrastructure.Data
             return result;
         }
 
-        public async Task<bool> LoguearUsuario(string userName, string pass)
+        public async Task<UsuarioDto> LoguearUsuario(Usuario usuario)
         {
             var result = await _factoryContext.Usuario
-                                .FirstOrDefaultAsync(u => u.UserName == userName && u.Pass == pass);
+                                .FirstOrDefaultAsync(u => u.UserName == usuario.UserName && u.Pass == usuario.Pass);
 
-            return result != null;
+            if (result != null)
+            {
+                UsuarioDto usuarioDto = new UsuarioDto
+                { 
+                    UsuarioId = result.UsuarioId,
+                    Nombre = result.Nombre,
+                    Correo = result.Correo,
+                    Identificacion = result.Identificacion,
+                    UserName = result.UserName
+                };
+
+                return usuarioDto;
+            }
+            else
+            {
+                return null;
+            }
         }
 
     }

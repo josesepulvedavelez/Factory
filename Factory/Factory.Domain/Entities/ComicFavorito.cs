@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -26,9 +27,8 @@ namespace Factory.Domain.Entities
         [MaxLength(10)]
         public string Extension { get; set; }
 
+
+        [ForeignKey("Usuario")]
         public int UsuarioId { get; set; }
-
-
-        public Usuario? Usuario { get; set; }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
+using System.Text.Json.Serialization;
 using System.Threading.Tasks;
 
 namespace Factory.Domain.Entities
@@ -11,27 +12,15 @@ namespace Factory.Domain.Entities
     {
         [Key]
         public int UsuarioId { get; set; }
+                
+        public string? Nombre { get; set; }
+                
+        public string? Identificacion { get; set; }
 
-        [Required]
-        [MaxLength(100)]
-        public string Nombre { get; set; }
-
-        [Required]
-        [MaxLength(15)]
-        public string Identificacion { get; set; }
-
-        [Required]
-        [MaxLength(500)]
-        public string Correo { get; set; }
-
-        [Required]
-        [MaxLength(10)]
-        public string UserName { get; set; }
-
-        [Required]
-        [MaxLength(255)]
-        public string Pass { get; set; }
-
-        public ICollection<ComicFavorito> ComicsFavoritos { get; set; } = new List<ComicFavorito>();
+        public string? Correo { get; set; }
+                
+        public string? UserName { get; set; }
+                
+        public string? Pass { get; set; }
     }
 }

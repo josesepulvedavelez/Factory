@@ -1,4 +1,5 @@
-﻿using Factory.Domain.Entities;
+﻿using Factory.Domain.DTOs;
+using Factory.Domain.Entities;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace Factory.Domain.Interfaces
     public interface IUsuarioRepository
     {
         Task<int> GuardarUsuario(Usuario usuario);
-        Task<bool> LoguearUsuario(string userName, string pass);
+        Task<UsuarioDto> LoguearUsuario(Usuario usuario);
+        Task<IEnumerable<Usuario>> ConsultarUsuarios();
     }
 }
