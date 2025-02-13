@@ -12,21 +12,10 @@ namespace Factory.Domain.Entities
     {
         [Key]
         public int ComicFavoritoId { get; set; }
-
-        [Required]
-        public int Id { get; set; }
-
-        [Required]
-        [MaxLength(255)]
-        public string Title { get; set; }
-
-        [Required]
-        public string Path { get; set; }
-
-        [Required]
-        [MaxLength(10)]
-        public string Extension { get; set; }
-
+        public int? Id { get; set; }                
+        public string? Title { get; set; }
+        public string? Path { get; set; }
+        public string? Extension { get; set; }
 
         [ForeignKey("Usuario")]
         public int UsuarioId { get; set; }
